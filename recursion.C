@@ -63,7 +63,6 @@ long long binomial(long long n, long long k)
   if ( k == 0 ) return 1;
   if ( k == n ) return 1;
   if ( n == 1 ) return n;
-  if ( k == 1 ) return n;
   return binomial(n-1,k) + binomial(n-1,k-1);
 }
 
