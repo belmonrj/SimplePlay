@@ -24,6 +24,7 @@ void recursion()
     }
 
   cout << "binomial coefficients" << endl;
+  // --- starting at 0,0 gives you Pascal's triangle
   for ( long long i = 0; i < niterations; ++i )
     {
       for ( long long j = 0; j <= i; ++j )
@@ -34,9 +35,10 @@ void recursion()
     }
 
   cout << "sterling numbers of the second kind" << endl;
-  for ( long long i = 0; i < niterations; ++i )
+  // --- can start at 0,0 but more easily understood starting at 1,1
+  for ( long long i = 1; i < niterations+1; ++i )
     {
-      for ( long long j = 0; j <= i; ++j )
+      for ( long long j = 1; j <= i; ++j )
         {
           cout << sksterling(i,j) << " ";
         }
