@@ -2,11 +2,12 @@ long long recursivesum(long long);
 long long recursivefactorial(long long);
 long long fibonacci(long long);
 long long binomial(long long, long long);
+long long sksterling(long long, long long);
 
 void recursion()
 {
 
-  const long long niterations = 20;
+  const long long niterations = 10;
 
   cout << "now starting..." << endl;
 
@@ -22,8 +23,8 @@ void recursion()
       cout << i << " " << fibonacci(i) << endl;
     }
 
-  cout << "some binomial coefficients" << endl;
-  for ( long long i = 0; i < 8; ++i )
+  cout << "binomial coefficients" << endl;
+  for ( long long i = 0; i < niterations; ++i )
     {
       for ( long long j = 0; j <= i; ++j )
         {
@@ -31,6 +32,17 @@ void recursion()
         }
       cout << endl;
     }
+
+  cout << "sterling numbers of the second kind" << endl;
+  for ( long long i = 0; i < niterations; ++i )
+    {
+      for ( long long j = 0; j <= i; ++j )
+        {
+          cout << sksterling(i,j) << " ";
+        }
+      cout << endl;
+    }
+
   cout << "now finished!" << endl;
 
 }
@@ -63,5 +75,13 @@ long long binomial(long long n, long long k)
   if ( k == 0 ) return 1;
   if ( k == n ) return 1;
   return binomial(n-1,k) + binomial(n-1,k-1);
+}
+
+long long sksterling(long long n, long long k)
+{
+  if ( n == 0 && k == 0 ) return 1;
+  if ( n == 0 ) return 0;
+  if ( k == n ) return 1;
+  return k*sksterling(n-1,k) + sksterling(n-1,k-1);
 }
 
