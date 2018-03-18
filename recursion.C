@@ -3,6 +3,7 @@ long long recursivefactorial(long long);
 long long fibonacci(long long);
 long long binomial(long long, long long);
 long long sksterling(long long, long long);
+long long bellnumber(long long);
 
 void recursion()
 {
@@ -45,6 +46,12 @@ void recursion()
       cout << endl;
     }
 
+  cout << "bell sequence" << endl;
+  for ( long long i = 0; i < niterations; ++i )
+    {
+      cout << i << " " << bellnumber(i) << endl;
+    }
+
   cout << "now finished!" << endl;
 
 }
@@ -85,5 +92,12 @@ long long sksterling(long long n, long long k)
   if ( n == 0 ) return 0;
   if ( k == n ) return 1;
   return k*sksterling(n-1,k) + sksterling(n-1,k-1);
+}
+
+long long bellnumber(long long n)
+{
+  long long bell = 0;
+  for ( long long i = 0; i < n+1; ++i ) bell += sksterling(n,i);
+  return bell;
 }
 
