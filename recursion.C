@@ -1,5 +1,8 @@
 long long recursivesum(long long);
 long long recursivefactorial(long long);
+long long recursivemult2(long long);
+long long recursivesquare(long long);
+long long recursiveexpo(long long);
 long long fibonacci(long long);
 long long binomial(long long, long long);
 long long sksterling(long long, long long);
@@ -16,6 +19,12 @@ void recursion()
   for ( long long i = 0; i < niterations; ++i )
     {
       cout << i << " " << recursivesum(i) << " " << recursivefactorial(i) << endl;
+    }
+
+  cout << "recursive multiplication (=exponentiation), squaring (name?), and exponentiation (=tetration)" << endl;
+  for ( long long i = 0; i < niterations; ++i )
+    {
+      cout << i << " " << recursivemult2(i) << " " << recursivesquare(i) << " " << recursiveexpo(i) << endl;
     }
 
   cout << "fibonacci sequence" << endl;
@@ -68,6 +77,26 @@ long long recursivefactorial(long long x)
 {
   if ( x == 0 ) return 1;
   return x * recursivefactorial(x-1);
+}
+
+
+long long recursivemult2(long long x)
+{
+  if ( x == 0 ) return 1;
+  return 2 * recursivemult2(x-1);
+}
+
+long long recursivesquare(long long x)
+{
+  if ( x == 0 ) return 1;
+  if ( x == 1 ) return 2;
+  return recursivesquare(x-1) * recursivesquare(x-1);
+}
+
+long long recursiveexpo(long long x)
+{
+  if ( x == 0 ) return 1;
+  return pow(2,recursiveexpo(x-1));
 }
 
 
