@@ -5,7 +5,7 @@ unsigned long long recursivesquare(unsigned long long);
 unsigned long long recursiveexpo(unsigned long long);
 unsigned long long fibonacci(unsigned long long);
 unsigned long long binomial(unsigned long long, unsigned long long);
-unsigned long long sksterling(unsigned long long, unsigned long long);
+unsigned long long skstirling(unsigned long long, unsigned long long);
 unsigned long long bellnumber(unsigned long long);
 
 void recursion()
@@ -44,13 +44,13 @@ void recursion()
       cout << endl;
     }
 
-  cout << "sterling numbers of the second kind" << endl;
+  cout << "stirling numbers of the second kind" << endl;
   // --- can start at 0,0 but more easily understood starting at 1,1
   for ( unsigned long long i = 1; i < niterations+1; ++i )
     {
       for ( unsigned long long j = 1; j <= i; ++j )
         {
-          cout << sksterling(i,j) << " ";
+          cout << skstirling(i,j) << " ";
         }
       cout << endl;
     }
@@ -115,18 +115,18 @@ unsigned long long binomial(unsigned long long n, unsigned long long k)
   return binomial(n-1,k) + binomial(n-1,k-1);
 }
 
-unsigned long long sksterling(unsigned long long n, unsigned long long k)
+unsigned long long skstirling(unsigned long long n, unsigned long long k)
 {
   if ( n == 0 && k == 0 ) return 1;
   if ( n == 0 ) return 0;
   if ( k == n ) return 1;
-  return k*sksterling(n-1,k) + sksterling(n-1,k-1);
+  return k*skstirling(n-1,k) + skstirling(n-1,k-1);
 }
 
 unsigned long long bellnumber(unsigned long long n)
 {
   unsigned long long bell = 0;
-  for ( unsigned long long i = 0; i < n+1; ++i ) bell += sksterling(n,i);
+  for ( unsigned long long i = 0; i < n+1; ++i ) bell += skstirling(n,i);
   return bell;
 }
 
